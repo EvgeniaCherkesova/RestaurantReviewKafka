@@ -1,18 +1,26 @@
-API endpoints
+## API endpoints
 API Service (порт 8080)
+
 Добавление отзыва
+
 POST /api/reviews
 
 Пример запроса:
 
+```powershell 
 {
   "restaurantName": "KFC",
   "rating": 5,
   "comment": "Nice"
 }
-Поиск отзывов
-GET /api/search?restaurant=KFC
-Отчеты
-GET /api/report/popular
-GET /api/report/top-rated
-GET /api/report
+```
+### Поиск отзывов
+Отчёты
+
+GET /api/search?restaurant=KFC - все отзывы о конкретном ресторане
+
+GET /api/report/popular - самые популярные рестораны по количеству отзывов
+
+GET /api/report/top-rated - рестораны с самыми высокими оценками
+
+GET /api/report - все отзывы
