@@ -11,7 +11,6 @@ import ru.cherkesova.repo.ReviewRepository;
 import java.time.LocalDateTime;
 
 @Service
-@Transactional
 public class KafkaConsumerService {
 
     private final ReviewRepository reviewRepository;
