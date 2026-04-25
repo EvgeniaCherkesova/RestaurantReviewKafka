@@ -10,10 +10,12 @@ public class ApiController {
 
     private final KafkaProducerService producerService;
     private final RestTemplate restTemplate;
+    private final DataServiceClient client;
 
-    public ApiController(KafkaProducerService producerService) {
+    public ApiController(KafkaProducerService producerService, DataServiceClient client) {
         this.producerService = producerService;
         this.restTemplate = new RestTemplate();
+        this.client = client;
     }
 
     @PostMapping("/reviews")
@@ -24,33 +26,21 @@ public class ApiController {
 
     @GetMapping("/search")
     public String search(@RequestParam String restaurant) {
-        return restTemplate.getForObject(
-                "http://data-service:8081/data/search?restaurant=" + restaurant,
-                String.class
-        );
+        return client.search(restaurant);
     }
 
     @GetMapping("/report")
     public String report() {
-        return restTemplate.getForObject(
-                "http://data-service:8081/data/report",
-                String.class
-        );
+        return client.getReport();
     }
 
     @GetMapping("/report/top-rated")
     public String topRated() {
-        return restTemplate.getForObject(
-                "http://data-service:8081/data/report/top-rated",
-                String.class
-        );
+        return client.getTopRated();
     }
 
     @GetMapping("/report/popular")
     public String popular() {
-        return restTemplate.getForObject(
-                "http://data-service:8081/data/report/popular",
-                String.class
-        );
+        return client.getPopular();
     }
 }

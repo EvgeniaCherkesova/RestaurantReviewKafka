@@ -6,3 +6,6 @@ spring:
     bootstrap-servers: kafka:9092
     producer:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+data:
+  service:
+    url: http://data-service:8081/data
