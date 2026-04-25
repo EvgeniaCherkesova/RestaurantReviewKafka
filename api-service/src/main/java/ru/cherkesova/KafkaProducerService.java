@@ -13,6 +13,6 @@ public class KafkaProducerService {
     }
 
     public void sendReview(ReviewDto review) {
-        kafkaTemplate.send("reviews-topic", review);
+        kafkaTemplate.send("reviews-topic", review.restaurantName, review);
     }
 }
